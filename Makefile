@@ -2,9 +2,9 @@
 ####################### Makefile Template ##############################
 ########################################################################
 # Student settings
-NAME = YOURNAME
-SID = YOURSID
-EMAIL = YOURUTAEMAIL
+NAME = Brandon Faulkner
+SID = 1001988125
+EMAIL = bxf8125@mavs.uta.edu
 SEMESTER = SPRING2025
 PROJECT=PROJ03
  
