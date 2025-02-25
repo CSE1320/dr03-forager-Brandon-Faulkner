@@ -13,86 +13,72 @@ const warningMessage = {
 const mushrooms = [
     {
         name: "Death Cap",
-        image: "https://www.woodlandtrust.org.uk/media/48295/deathcap-fungi-amanita-phalloides-alamy-brgxfp-naturepix.jpg",
+        image: "/images/death_cap.jpg",
         scientific_name: "Amanita phalloides",
-        description: "Description",
-        region: "Region",
+        description: "",
+        region: "",
         filterable: {
             is_toxic: true,
-            is_favorite: false,
+            is_favorite: true,
         },
         characteristics: {
             diameter: "4 in",
         }
     },
     {
-        name: "Death Cap",
-        image: "https://www.woodlandtrust.org.uk/media/48295/deathcap-fungi-amanita-phalloides-alamy-brgxfp-naturepix.jpg",
-        scientific_name: "Amanita phalloides",
-        description: "Description",
-        region: "Region",
+        name: "Paddy Straw",
+        image: "/images/paddy_straw.jpg",
+        scientific_name: "",
+        description: "",
+        region: "",
         filterable: {
-            is_toxic: true,
-            is_favorite: false,
+            is_toxic: false,
+            is_favorite: true,
         },
         characteristics: {
-            diameter: "4 in",
+            diameter: "",
         }
     },
     {
-        name: "Death Cap",
-        image: "https://www.woodlandtrust.org.uk/media/48295/deathcap-fungi-amanita-phalloides-alamy-brgxfp-naturepix.jpg",
-        scientific_name: "Amanita phalloides",
-        description: "Description",
-        region: "Region",
+        name: "Destroying Angel",
+        image: "/images/destroying_angel.jpg",
+        scientific_name: "",
+        description: "",
+        region: "",
         filterable: {
             is_toxic: true,
-            is_favorite: false,
+            is_favorite: true,
         },
         characteristics: {
-            diameter: "4 in",
+            diameter: "",
         }
     },
     {
-        name: "Death Cap",
-        image: "https://www.woodlandtrust.org.uk/media/48295/deathcap-fungi-amanita-phalloides-alamy-brgxfp-naturepix.jpg",
-        scientific_name: "Amanita phalloides",
-        description: "Description",
-        region: "Region",
+        name: "False Death Cap",
+        image: "/images/false_death_cap.jpg",
+        scientific_name: "",
+        description: "",
+        region: "",
         filterable: {
             is_toxic: true,
-            is_favorite: false,
+            is_favorite: true,
         },
         characteristics: {
-            diameter: "4 in",
+            diameter: "",
         }
     },
     {
-        name: "Death Cap",
-        image: "https://www.woodlandtrust.org.uk/media/48295/deathcap-fungi-amanita-phalloides-alamy-brgxfp-naturepix.jpg",
-        scientific_name: "Amanita phalloides",
-        description: "Description",
-        region: "Region",
+        name: "Puffball",
+        image: "/images/puffball.jpg",
+        scientific_name: "",
+        description: "",
+        region: "",
         filterable: {
-            is_toxic: true,
-            is_favorite: false,
+            is_toxic: false,
+            is_favorite: true,
         },
         characteristics: {
-            diameter: "4 in",
-        }
-    },
-    {
-        name: "Death Cap",
-        image: "https://www.woodlandtrust.org.uk/media/48295/deathcap-fungi-amanita-phalloides-alamy-brgxfp-naturepix.jpg",
-        scientific_name: "Amanita phalloides",
-        description: "Description",
-        region: "Region",
-        filterable: {
-            is_toxic: true,
-            is_favorite: false,
-        },
-        characteristics: {
-            diameter: "4 in",
+            diameter: "",
         }
     }
 ]
