@@ -1,7 +1,15 @@
-import DashboardPage from './dashboard/page';  // Use relative path
-import Sandbox from './sandbox/page';  // Use relative path
+'use client'
+import { useState } from 'react';
+import DashboardPage from './dashboard/page';
+import { mushrooms as mushroomData } from '@/data/development';
 
 export default function Home() {
-  return <DashboardPage />;  // Render the DashboardPage as the default for the '/' route
-  // return <Sandbox />;  // Render the Sandbox as the default for the '/' route
+  const [mushrooms, setMushrooms] = useState(mushroomData);
+  const [activeMushroom, setActiveMushroom] = useState(null);
+
+  return <DashboardPage
+    currentMushrooms={mushrooms}
+    setMushrooms={setMushrooms}
+    activeMushroom={activeMushroom}
+    setActiveMushroom={setActiveMushroom} />;
 }

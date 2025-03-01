@@ -13,7 +13,9 @@ export default {
         "main-green": "#579076",
         "dark-green": "#397367",
         "main-white": "#f2f2f2",
-        "main-blue": "#324053"
+        "main-blue": "#324053",
+        "bg-gray": "#D9D9D9",
+        "fg-gray": "#7C7C7C"
       },
       borderRadius: {
         "top-lr": '30px 30px 0 0'
