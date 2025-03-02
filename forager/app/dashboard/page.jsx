@@ -7,16 +7,11 @@ import MushroomList from '@/components/MushroomList';
 import FilterSettings from '@/components/FilterSettings';
 import Pill from '@/components/Pill';
 import { FaFilter } from 'react-icons/fa';
+import { useAppState } from '@/contexts/AppStateProvider';
 
-export default function DashboardPage({
-  currentMushrooms = [], 
-  setMushrooms, 
-  activeMushroom, 
-  setActiveMushroom,
-  activeFilters = [],
-  toggleFilter
-}) {
+export default function DashboardPage() {
   const router = useRouter();
+  const { mushrooms, setActiveMushroom, activeFilters, toggleFilter } = useAppState();
   const [filteredMushrooms, setFilteredMushrooms] = useState([]);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -48,16 +43,17 @@ export default function DashboardPage({
   }, [activeFilters]);
 
   useEffect(() => {
-    const filtered = applyFilters(currentMushrooms, searchQuery);
+    const filtered = applyFilters(mushrooms, searchQuery);
     setFilteredMushrooms(filtered);
-  }, [currentMushrooms, activeFilters, searchQuery, applyFilters]);
+  }, [mushrooms, activeFilters, searchQuery, applyFilters]);
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
 
   const handleMushroomSelect = (mushroom) => {
     setActiveMushroom(mushroom);
     router.push('/mushroom');
-  }
-  const handleSearch = (query) => {
-    setSearchQuery(query);
   };
 
   return (
@@ -65,13 +61,13 @@ export default function DashboardPage({
       <div className="flex h-full">
         <div className="flex flex-col w-full bg-dark-green">
           <div className="flex flex-row w-full py-12 px-6">
-            <h1 className="flex-grow flex flex-col justify-center items-start">
-              Hi,<br></br><span className="font-bold text-4xl">Chantelle!</span>
-            </h1>
-            <div className="flex justify-center items-end relative bottom-4">
-              <div className="h-10 w-10 p-2 text-center rounded-full bg-[#5f464b] shadow-md cursor-pointer">C</div>
+              <h1 className="flex-grow flex flex-col justify-center items-start">
+                Hi,<br></br><span className="font-bold text-4xl">Chantelle!</span>
+              </h1>
+              <div className="flex justify-center items-end relative bottom-4">
+                <div className="h-10 w-10 p-2 text-center rounded-full bg-[#5f464b] shadow-md cursor-pointer">C</div>
+              </div>
             </div>
-          </div>
           <div className="flex-grow w-full bg-main-white rounded-top-lr flex flex-col">
             <div className='flex w-full h-12 flex-row mt-6 px-4'>
               <div className='w-4/5 h-full'><Search onSearch={handleSearch} /></div>
