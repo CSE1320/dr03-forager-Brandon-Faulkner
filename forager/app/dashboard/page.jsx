@@ -1,23 +1,57 @@
 'use client'
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import NavBar from '../../components/NavBar';
 import Search from '@/components/Search';
 import MushroomList from '@/components/MushroomList';
 import FilterSettings from '@/components/FilterSettings';
+import Pill from '@/components/Pill';
 import { FaFilter } from 'react-icons/fa';
 
-export default function DashboardPage({currentMushrooms, setMushrooms, activeMushroom, setActiveMushroom}) {
-  //Only show favorited mushrooms on dashboard
-  const favMushrooms = currentMushrooms.filter((mushroom) => mushroom.filterable.is_favorite);
-  const [filteredMushrooms, setFilteredMushrooms] = useState(favMushrooms);
+export default function DashboardPage({
+  currentMushrooms, 
+  setMushrooms, 
+  activeMushroom, 
+  setActiveMushroom,
+  activeFilters,
+  toggleFilter
+}) {
+  const [filteredMushrooms, setFilteredMushrooms] = useState([]);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
-  const handleSearch = (searchQuery) => {
-    const filtered = favMushrooms.filter((mushroom) =>
-      mushroom.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+  const applyFilters = useCallback((mushrooms, query) => {
+    // First filter favorites
+    let result = mushrooms.filter((mushroom) => mushroom.filterable.is_favorite);
+    
+    // Apply search if exists
+    if (query) {
+      result = result.filter((mushroom) =>
+        mushroom.name.toLowerCase().includes(query.toLowerCase())
+      );
+    }
 
+    // Then apply active filters
+    if (activeFilters.length > 0) {
+      result = result.filter(mushroom => 
+        activeFilters.every(filter => {
+          return (
+            (mushroom.filterable.tags && mushroom.filterable.tags.includes(filter)) ||
+            (mushroom.filterable.regions && mushroom.filterable.regions.includes(filter)) ||
+            (mushroom.filterable.category && mushroom.filterable.category.includes(filter))
+          );
+        })
+      );
+    }
+    return result;
+  }, [activeFilters]);
+
+  useEffect(() => {
+    const filtered = applyFilters(currentMushrooms, searchQuery);
     setFilteredMushrooms(filtered);
+  }, [currentMushrooms, activeFilters, searchQuery, applyFilters]);
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
   };
 
   return (
@@ -40,7 +74,17 @@ export default function DashboardPage({currentMushrooms, setMushrooms, activeMus
             </div>
             <div className='flex flex-col text-main-blue mt-6 flex-grow'>
               <h2 className='font-bold text-xl px-6'>My Collection</h2>
-              <div className='mt-2 px-6'>Active Filters</div>
+              <div className='mt-2 px-6'>
+                <div className="flex flex-wrap gap-2">
+                  {activeFilters.map((filter, index) => (
+                    <Pill 
+                      key={index} 
+                      text={filter} 
+                      active={true}
+                      onToggle={toggleFilter} />
+                  ))}
+                </div>
+              </div>
               <div className='mt-2 flex-grow overflow-y-auto pb-12'>
                 <MushroomList mushrooms={filteredMushrooms} />
               </div>
@@ -48,7 +92,11 @@ export default function DashboardPage({currentMushrooms, setMushrooms, activeMus
           </div>
         </div>
       </div>
-      <FilterSettings isOpen={isFilterOpen} onClose={() => setIsFilterOpen(false)} />
+      <FilterSettings 
+        isOpen={isFilterOpen} 
+        onClose={() => setIsFilterOpen(false)}
+        activeFilters={activeFilters}
+        toggleFilter={toggleFilter} />
       <NavBar />
     </div>
   );

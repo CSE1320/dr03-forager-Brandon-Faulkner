@@ -16,9 +16,10 @@ const mushrooms = [
         image: "/images/death_cap.jpg",
         scientific_name: "Amanita phalloides",
         description: "",
-        region: "",
         filterable: {
-            is_toxic: true,
+            tags: ["Favorites"],
+            regions: ["North America", "Europe"],
+            category: ["Poisonous"],
             is_favorite: true,
         },
         characteristics: {
@@ -30,9 +31,10 @@ const mushrooms = [
         image: "/images/paddy_straw.jpg",
         scientific_name: "",
         description: "",
-        region: "",
         filterable: {
-            is_toxic: false,
+            tags: ["Recents"],
+            regions: ["Asia"],
+            category: ["Medicinal", "Good for Broths"],
             is_favorite: true,
         },
         characteristics: {
@@ -44,9 +46,10 @@ const mushrooms = [
         image: "/images/destroying_angel.jpg",
         scientific_name: "",
         description: "",
-        region: "",
         filterable: {
-            is_toxic: true,
+            tags: ["Favorites"],
+            regions: ["North America"],
+            category: ["Poisonous"],
             is_favorite: true,
         },
         characteristics: {
@@ -58,9 +61,10 @@ const mushrooms = [
         image: "/images/false_death_cap.jpg",
         scientific_name: "",
         description: "",
-        region: "",
         filterable: {
-            is_toxic: true,
+            tags: ["Favorites"],
+            regions: ["Europe"],
+            category: ["Poisonous"],
             is_favorite: true,
         },
         characteristics: {
@@ -72,9 +76,10 @@ const mushrooms = [
         image: "/images/puffball.jpg",
         scientific_name: "",
         description: "",
-        region: "",
         filterable: {
-            is_toxic: false,
+            tags: ["Recents"],
+            regions: ["North America"],
+            category: ["Good for Broths"],
             is_favorite: true,
         },
         characteristics: {

@@ -2,8 +2,7 @@ import PillList from './PillList'
 import { IoMdClose } from "react-icons/io";
 import { filterData } from "../data/development.jsx"
 
-
-export default function FilterSettings({ isOpen, onClose }) {
+export default function FilterSettings({ isOpen, onClose, activeFilters, toggleFilter }) {
     if (!isOpen) return null;
 
     return (
@@ -18,9 +17,15 @@ export default function FilterSettings({ isOpen, onClose }) {
                         className="absolute right-0 text-2xl cursor-pointer text-black"
                     />
                 </div>
-                <div className="px-4">
+                <div className="overflow-y-auto px-4">
                     {filterData.map((filter, index) => (
-                        <PillList key={index} heading={filter.title} pills={filter.pills} />
+                        <PillList 
+                            key={index} 
+                            heading={filter.title} 
+                            pills={filter.pills}
+                            activeFilters={activeFilters}
+                            toggleFilter={toggleFilter}
+                        />
                     ))}
                 </div>
             </div>
