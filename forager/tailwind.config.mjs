@@ -15,7 +15,8 @@ export default {
         "main-white": "#f2f2f2",
         "main-blue": "#324053",
         "bg-gray": "#D9D9D9",
-        "fg-gray": "#7C7C7C"
+        "fg-gray": "#7C7C7C",
+        "main-red": "#FF5050",
       },
       borderRadius: {
         "top-lr": '30px 30px 0 0'
