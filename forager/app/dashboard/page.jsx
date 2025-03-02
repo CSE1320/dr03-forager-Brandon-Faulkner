@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import NavBar from '../../components/NavBar';
 import Search from '@/components/Search';
 import MushroomList from '@/components/MushroomList';
@@ -8,13 +9,14 @@ import Pill from '@/components/Pill';
 import { FaFilter } from 'react-icons/fa';
 
 export default function DashboardPage({
-  currentMushrooms, 
+  currentMushrooms = [], 
   setMushrooms, 
   activeMushroom, 
   setActiveMushroom,
-  activeFilters,
+  activeFilters = [],
   toggleFilter
 }) {
+  const router = useRouter();
   const [filteredMushrooms, setFilteredMushrooms] = useState([]);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -50,6 +52,10 @@ export default function DashboardPage({
     setFilteredMushrooms(filtered);
   }, [currentMushrooms, activeFilters, searchQuery, applyFilters]);
 
+  const handleMushroomSelect = (mushroom) => {
+    setActiveMushroom(mushroom);
+    router.push('/mushroom');
+  }
   const handleSearch = (query) => {
     setSearchQuery(query);
   };
@@ -86,7 +92,10 @@ export default function DashboardPage({
                 </div>
               </div>
               <div className='mt-2 flex-grow overflow-y-auto pb-12'>
-                <MushroomList mushrooms={filteredMushrooms} />
+                <MushroomList 
+                  mushrooms={filteredMushrooms} 
+                  onSelectMushroom={handleMushroomSelect}
+                />
               </div>
             </div>
           </div>

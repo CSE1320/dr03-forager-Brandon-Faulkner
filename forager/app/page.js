@@ -5,8 +5,8 @@ import { mushrooms as mushroomData } from '@/data/development';
 
 export default function Home() {
   const [mushrooms, setMushrooms] = useState(mushroomData);
-  const [activeMushroom, setActiveMushroom] = useState(null);
-  const [activeFilters, setActiveFilters] = useState([]);
+  const [activeMushroom, setActiveMushroom] = useState(mushroomData[0]);
+  const [activeFilters, setActiveFilters] = useState(["Favorites", "Poisonous"]);
 
   const toggleFilter = (filter) => {
     setActiveFilters(prev => 

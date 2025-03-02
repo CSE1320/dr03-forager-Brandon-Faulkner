@@ -11,7 +11,7 @@ export default function NavBar() {
           <TbMushroom />
         </div>
       </Link>
-      <Link href="/" passHref>
+      <Link href="/dashboard" passHref>
         <div className={styles.navItem}>
           <FaHome />
         </div>
