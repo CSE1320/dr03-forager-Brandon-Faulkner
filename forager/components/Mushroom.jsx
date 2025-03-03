@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useState, useEffect } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
 
@@ -27,7 +28,7 @@ export default function Mushroom({ mushroom, isCard, onSelect, matchedMushroom }
 
     return isCard ? (
         // Card View
-        <div
+        <Link href={onSelect ? "/mushroom" : "#"} passHref
             className='w-28 h-40 min-w-32 flex flex-col items-center cursor-pointer'
             onClick={onSelect ? () => onSelect(mushroom) : null}
         >
@@ -41,7 +42,7 @@ export default function Mushroom({ mushroom, isCard, onSelect, matchedMushroom }
                 <img className='w-[5.5rem] h-24 object-cover mt-1' src={mushroom.image} alt={mushroom.name}></img>
             </div>
             <h1 className='text-base text-main-blue'>{mushroom.name}</h1>
-        </div>
+        </Link>
     ) : (
         // Full Display View
         <div>

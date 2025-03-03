@@ -1,6 +1,5 @@
 'use client'
 import { useState, useEffect, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
 import NavBar from '../../components/NavBar';
 import Search from '@/components/Search';
 import MushroomList from '@/components/MushroomList';
@@ -10,7 +9,6 @@ import { FaFilter } from 'react-icons/fa';
 import { useAppState } from '@/contexts/AppStateProvider';
 
 export default function DashboardPage() {
-  const router = useRouter();
   const { mushrooms, setActiveMushroom, activeFilters, toggleFilter } = useAppState();
   const [filteredMushrooms, setFilteredMushrooms] = useState([]);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -51,7 +49,6 @@ export default function DashboardPage() {
 
   const handleMushroomSelect = (mushroom) => {
     setActiveMushroom(mushroom);
-    router.push('/mushroom');
   };
 
   return (

@@ -1,16 +1,15 @@
 'use client'
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import NavBar from '../../components/NavBar';
 import Message from '@/components/Message';
 import { messages } from '@/data/development';
 import Mushroom from '@/components/Mushroom';
-import MushroomList from '@/components/MushroomList';
+import SimilarMatchList from '@/components/SimilarMatchList';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { useAppState } from '@/contexts/AppStateProvider';
 
 export default function MushroomPage() {
-  const router = useRouter();
   const { mushrooms, activeMushroom, toggleFavorite } = useAppState();
   const [isMessageOpen, setIsMessageOpen] = useState(true);
 
@@ -22,9 +21,9 @@ export default function MushroomPage() {
 
       <div className="sticky top-0 z-10 flex items-center justify-center bg-main-green h-24 w-full rounded-b-3xl">
         <div className='flex w-full h-full justify-center items-end pb-2 relative'>
-          <button className="absolute left-2 mb-1 text-white">
-            <FaChevronLeft className="h-7 w-7" onClick={() => router.push("/dashboard")} />
-          </button>
+          <Link href={"/dashboard"} className='absolute left-2 mb-1 text-white' passHref >
+            <FaChevronLeft className="h-7 w-7" />
+          </Link>
           <h1 className="text-white font-semibold text-3xl">Match Results</h1>
         </div>
       </div>
@@ -42,17 +41,17 @@ export default function MushroomPage() {
       <Message message={messages.warningMessage} />
 
       <div className="w-full mx-auto px-4 pt-4 pb-20">
-        <div className="flex justify-end items-center gap-2 my-2 text-black cursor-pointer">
-          <button className="text-sm" onClick={() => router.push("/comparison")}>Compare</button>
+        <Link href={"/comparison"} className="flex justify-end items-center gap-2 my-2 text-black cursor-pointer" passHref>
+          <p className='text-sm'>Compare</p>
           <FaChevronRight />
-        </div>
+        </Link>
 
         <Mushroom
           mushroom={activeMushroom}
           isCard={false}
           onSelect={toggleFavorite} />
 
-        <MushroomList
+        <SimilarMatchList
           mushrooms={similarMatches}
           onSelectMushroom={null}
           heading={"Similar Matches"}
