@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import NavBar from '@/components/NavBar'
+import SwipeNavigation from "@/components/SwipeNavigation";
 import { AppStateProvider } from '@/contexts/AppStateProvider';
 
 const geistSans = Geist({
@@ -25,7 +25,9 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AppStateProvider>
+          <SwipeNavigation>
           {children}
+          </SwipeNavigation>
         </AppStateProvider>
       </body>
     </html>
