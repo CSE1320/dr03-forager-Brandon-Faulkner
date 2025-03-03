@@ -27,7 +27,6 @@ export default function RootLayout({ children }) {
         <AppStateProvider>
           {children}
         </AppStateProvider>
-        <NavBar />
       </body>
     </html>
   );

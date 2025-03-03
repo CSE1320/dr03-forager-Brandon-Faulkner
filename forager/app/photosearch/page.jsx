@@ -1,10 +1,9 @@
-import NavBar from '../../components/NavBar';
+import CameraScreen from '@/components/BackgroundScreen';
 
 export default function PhotoSearchPage() {
   return (
     <div className="page">
-      <h1>Photo Search Page</h1>
-      <NavBar />
+      <CameraScreen />
     </div>
   );
 }

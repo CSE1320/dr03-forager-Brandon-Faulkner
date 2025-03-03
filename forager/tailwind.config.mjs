@@ -17,6 +17,10 @@ export default {
         "bg-gray": "#D9D9D9",
         "fg-gray": "#7C7C7C",
         "main-red": "#FF5050",
+        "main-brown": "#8E4A49",
+        "high-similar": "#73d89f",
+        "med-similar": "#ff6666",
+        "low-similar": "#a5a5a5"
       },
       borderRadius: {
         "top-lr": '30px 30px 0 0'

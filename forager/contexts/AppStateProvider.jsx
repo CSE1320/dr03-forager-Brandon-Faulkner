@@ -10,10 +10,28 @@ export function AppStateProvider({ children }) {
   const [activeFilters, setActiveFilters] = useState(["Favorites", "Poisonous"]);
 
   const toggleFilter = (filter) => {
-    setActiveFilters(prev => 
+    setActiveFilters(prev =>
       prev.includes(filter)
         ? prev.filter(f => f !== filter)
         : [...prev, filter]
+    );
+  };
+
+  const toggleFavorite = (name) => {
+    setMushrooms((prevMushrooms) =>
+      prevMushrooms.map((mushroom) =>
+        mushroom.name === name
+          ? {
+            ...mushroom,
+            filterable: {
+              ...mushroom.filterable,
+              tags: mushroom.filterable.tags.includes("Favorites")
+                ? mushroom.filterable.tags.filter(tag => tag !== "Favorites")
+                : [...mushroom.filterable.tags, "Favorites"]
+            }
+          }
+          : mushroom
+      )
     );
   };
 
@@ -23,7 +41,8 @@ export function AppStateProvider({ children }) {
     activeMushroom,
     setActiveMushroom,
     activeFilters,
-    toggleFilter
+    toggleFilter,
+    toggleFavorite
   };
 
   return (

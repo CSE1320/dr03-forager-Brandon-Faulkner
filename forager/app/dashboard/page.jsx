@@ -16,11 +16,9 @@ export default function DashboardPage() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const applyFilters = useCallback((mushrooms, query) => {
-    // First filter favorites
-    let result = mushrooms.filter((mushroom) => mushroom.filterable.is_favorite);
-    
+  const applyFilters = useCallback((mushrooms, query) => {   
     // Apply search if exists
+    let result = mushrooms;
     if (query) {
       result = result.filter((mushroom) =>
         mushroom.name.toLowerCase().includes(query.toLowerCase())
