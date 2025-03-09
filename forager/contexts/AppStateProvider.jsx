@@ -7,7 +7,7 @@ const AppStateContext = createContext();
 export function AppStateProvider({ children }) {
   const [mushrooms, setMushrooms] = useState(mushroomData);
   const [activeMushroom, setActiveMushroom] = useState(mushroomData[0]);
-  const [activeFilters, setActiveFilters] = useState(["Favorites", "Poisonous"]);
+  const [activeFilters, setActiveFilters] = useState([]);
 
   const toggleFilter = (filter) => {
     setActiveFilters(prev =>

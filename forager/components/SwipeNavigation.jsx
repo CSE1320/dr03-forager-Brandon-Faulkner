@@ -29,7 +29,7 @@ export default function SwipeNavigation({ children }) {
     });
 
     return (
-        <div {...handlers} className="h-screen w-full overflow-hidden">
+        <div {...handlers} className="h-screen w-full">
             {children}
         </div>
     );

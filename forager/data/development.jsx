@@ -21,7 +21,7 @@ const mushrooms = [
         scientific_name: "Amanita phalloides",
         description: "The Death Cap is a highly toxic mushroom native to Europe, now found in various parts of the world. It has a large, imposing fruiting body with a cap that can be pale-green, yellowish-green, olive-green, bronze, or white, often paler toward the margins. The cap surface is sticky when wet and easily peeled. The gills are white and crowded, and the stipe is white with grayish-olive scales, featuring a swollen, sac-like white volva at the base. The smell is initially faint and honey-sweet, becoming overpowering and sickly-sweet over time. This mushroom contains potent toxins, including amatoxins and phallotoxins, which can cause severe liver and kidney damage if ingested.",
         filterable: {
-            tags: ["Favorites"],
+            tags: [],
             regions: ["North America", "Europe"],
             category: ["Poisonous"],
         },
@@ -62,7 +62,7 @@ const mushrooms = [
         scientific_name: "Amanita virosa",
         description: "The Destroying Angel is a deadly poisonous mushroom found in forests across North America and Europe. It is pure white, with a smooth cap that is initially hemispherical, becoming convex or flat with age. The gills are free and white, and the stipe is white with a fragile ring and a prominent, sack-like volva at the base. This mushroom contains potent amatoxins that inhibit RNA polymerase II, leading to severe liver and kidney failure if ingested.",
         filterable: {
-            tags: ["Favorites"],
+            tags: [],
             regions: ["North America"],
             category: ["Poisonous"],
         },

@@ -12,11 +12,11 @@ export default function ComparisonTable({ mushroom }) {
         stemColor: "White",
         stemRing: "Absent",
         habitat: "?",
-      });
-    
-      const handleChange = (field, value) => {
+    });
+
+    const handleChange = (field, value) => {
         setEditableValues((prev) => ({ ...prev, [field]: value }));
-      };
+    };
     return (
         <div>
             <div className='flex justify-between gap-4'>
@@ -28,7 +28,10 @@ export default function ComparisonTable({ mushroom }) {
                 </div>
                 <div className="flex flex-col items-center w-2/4">
                     <div className="flex relative justify-center w-full h-64 pb-8 px-4 pt-9 bg-white shadow-lg">
-                        <div className="absolute top-1 left-2 bg-main-red text-white text-xs font-semibold px-2 py-1 rounded-full flex items-center space-x-1">
+                        {mushroom.filterable.category.includes("Poisonous") && (
+                            <p className="absolute top-1 left-2">💀</p>
+                        )}
+                        <div className="absolute top-1 left-9 bg-main-red text-white text-xs font-semibold px-2 py-1 rounded-full flex items-center space-x-1">
                             <img src='/icons/icon_warning.svg' className='w-5 h-5' alt="Warning Icon"></img>
                             <span>97% Match</span>
                         </div>
